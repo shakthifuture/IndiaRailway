@@ -1,0 +1,9 @@
+databaseChangeLog:
+- changeSet:
+    id: 1.0.0 inital data
+    author: sathia
+    changes:
+    - sqlFile:
+        relativeToChangelogFile: true
+        encoding: utf8
+        path: initial_data_dump.sql
