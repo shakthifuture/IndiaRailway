@@ -27,45 +27,6 @@ CREATE TABLE IF NOT EXISTS `cancelled_schedule` (
 /*!40000 ALTER TABLE `cancelled_schedule` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cancelled_schedule` ENABLE KEYS */;
 
--- Dumping structure for table indianrailway.databasechangelog
-CREATE TABLE IF NOT EXISTS `databasechangelog` (
-  `ID` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `AUTHOR` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `FILENAME` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `DATEEXECUTED` datetime NOT NULL,
-  `ORDEREXECUTED` int(11) NOT NULL,
-  `EXECTYPE` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `MD5SUM` varchar(35) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `DESCRIPTION` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `COMMENTS` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `TAG` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `LIQUIBASE` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `CONTEXTS` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `LABELS` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `DEPLOYMENT_ID` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Dumping data for table indianrailway.databasechangelog: ~1 rows (approximately)
-/*!40000 ALTER TABLE `databasechangelog` DISABLE KEYS */;
-INSERT INTO `databasechangelog` (`ID`, `AUTHOR`, `FILENAME`, `DATEEXECUTED`, `ORDEREXECUTED`, `EXECTYPE`, `MD5SUM`, `DESCRIPTION`, `COMMENTS`, `TAG`, `LIQUIBASE`, `CONTEXTS`, `LABELS`, `DEPLOYMENT_ID`) VALUES
-	('1.0.0 inital data', 'sathia', 'classpath:/db/changelog/init/_changelog-master.yaml', '2020-06-27 10:53:05', 1, 'EXECUTED', '8:7fb878ade3c23a7a8d6f83fdf68fc393', 'sqlFile', '', NULL, '3.8.9', NULL, NULL, '3235385035');
-/*!40000 ALTER TABLE `databasechangelog` ENABLE KEYS */;
-
--- Dumping structure for table indianrailway.databasechangeloglock
-CREATE TABLE IF NOT EXISTS `databasechangeloglock` (
-  `ID` int(11) NOT NULL,
-  `LOCKED` bit(1) NOT NULL,
-  `LOCKGRANTED` datetime DEFAULT NULL,
-  `LOCKEDBY` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Dumping data for table indianrailway.databasechangeloglock: ~1 rows (approximately)
-/*!40000 ALTER TABLE `databasechangeloglock` DISABLE KEYS */;
-INSERT INTO `databasechangeloglock` (`ID`, `LOCKED`, `LOCKGRANTED`, `LOCKEDBY`) VALUES
-	(1, b'0', NULL, NULL);
-/*!40000 ALTER TABLE `databasechangeloglock` ENABLE KEYS */;
-
 -- Dumping structure for table indianrailway.roles
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
