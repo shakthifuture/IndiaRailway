@@ -44,7 +44,7 @@ public class ScheduleService {
 	@Transactional(readOnly = true)
 	public List<ScheduleDto> getScheduleByStation(Integer id){
 		Optional<Station> station = stationRepository.findById(id);
-		return scheduleRepository.findBySourceStation(station.get()).stream()
+		return scheduleRepository.findBySourceStationOrDestinationStation(station.get(), station.get()).stream()
 				.map(scheduleMapper::toDto)
 				.collect(Collectors.toList());
 	}

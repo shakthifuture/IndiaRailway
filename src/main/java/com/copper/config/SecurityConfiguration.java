@@ -12,13 +12,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.copper.constants.SecurityConstants;
 import com.copper.security.AuthorizationFilter;
-import com.copper.service.UserService;
+import com.copper.service.UserServiceImpl;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	private UserService userService;
+	private UserServiceImpl userServiceImpl;
     
     @Bean
     BCryptPasswordEncoder passwordEncoder() {
@@ -32,6 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         			.antMatchers(SecurityConstants.SIGN_UP_URL).permitAll()
         			.antMatchers("/swagger-ui/**").permitAll()
         			.antMatchers("/v3/**").permitAll()
+        			.antMatchers("/india-railway-api-docs.html").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new AuthorizationFilter(authenticationManager()))
@@ -40,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userServiceImpl).passwordEncoder(passwordEncoder());
     }
     
     @Override

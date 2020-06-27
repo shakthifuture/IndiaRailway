@@ -1,5 +1,9 @@
 package com.copper.service.dto;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import com.copper.model.Role;
 import com.copper.model.User;
 
 import lombok.Getter;
@@ -16,6 +20,7 @@ public class UserDto {
 	private String emailAddress;
 	private String token;
 	private boolean activated;
+	private Set<String> roles;
 	
 	public UserDto() {
 		
@@ -28,6 +33,7 @@ public class UserDto {
 		this.lastName = user.getLastName();
 		this.emailAddress = user.getEmailAddres();
 		this.activated = user.isActivated();
+		this.roles = user.getRoles().stream().map(Role::getName).collect(Collectors.toSet());
 	}
 	
 }

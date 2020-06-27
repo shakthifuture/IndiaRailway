@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.copper.service.UserService;
+import com.copper.service.UserServiceImpl;
 import com.copper.service.dto.UserDto;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,17 +19,17 @@ import lombok.extern.slf4j.Slf4j;
 public class UserResource {
 
 	@Autowired
-	private UserService userService;
+	private UserServiceImpl userServiceImpl;
 
 	@PostMapping("/register")
 	public ResponseEntity<UserDto> signUp(@RequestBody UserDto userDto) {
-		return ResponseEntity.ok(userService.newUser(userDto));
+		return ResponseEntity.ok(userServiceImpl.newUser(userDto));
 	}
 
 	@PostMapping(value = "/authenticate")
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody UserDto userDto) {
 		try {
-			userDto = userService.authenticateUser(userDto);
+			userDto = userServiceImpl.authenticateUser(userDto);
 			if(userDto.isActivated())
 				return ResponseEntity.ok(userDto);
 			else {

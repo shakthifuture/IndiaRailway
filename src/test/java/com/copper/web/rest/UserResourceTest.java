@@ -69,7 +69,8 @@ public class UserResourceTest {
         mockMvc.perform(post("/api/user/authenticate")
         		.contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(TestUtil.convertObjectToJsonBytes(login)))
-                .andExpect(status().isLocked());
+        		.andExpect(status().isBadRequest())
+        		.andReturn().getResponse().getContentAsString().equals("USER_DISABLED");
 	}
 	
 	@Test

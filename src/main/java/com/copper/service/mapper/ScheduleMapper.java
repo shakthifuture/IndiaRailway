@@ -1,5 +1,7 @@
 package com.copper.service.mapper;
 
+import java.sql.Time;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,11 +31,11 @@ public class ScheduleMapper implements EntityMapper<ScheduleDto, Schedule>{
 		} else {
 			Schedule schedule = new Schedule();
 			schedule.setId(dto.getId());
-			schedule.setTrain(trainRepository.findByTrainNumber(dto.getTrainNumber()));
-			schedule.setSourceStation(stationRepository.findByStationCode(dto.getSourceStationCode()));
-			schedule.setDesginationStation(stationRepository.findByStationCode(dto.getDesginationStationCode()));
-			schedule.setArrivalTime(dto.getArrivalTime());
-			schedule.setDepartureTime(dto.getDepartureTime());
+			schedule.setTrain(trainRepository.findById(dto.getTrain().getId()).get());
+			schedule.setSourceStation(stationRepository.findById(dto.getSourceStation().getId()).get());
+			schedule.setDestinationStation(stationRepository.findById(dto.getDestinationStation().getId()).get());
+			schedule.setArrivalTime(Time.valueOf(dto.getArrivalTime()+":00")); //Time conversion
+			schedule.setDepartureTime(Time.valueOf(dto.getDepartureTime()+":00"));
 			schedule.setSunday(dto.isSunday());
 			schedule.setMonday(dto.isMonday());
 			schedule.setTuesday(dto.isTuesday());

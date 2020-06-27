@@ -11,6 +11,6 @@ import com.copper.model.Station;
 @Repository
 public interface ScheduleRepository extends JpaRepository<Schedule, Integer> {
 
-	public List<Schedule> findBySourceStation(Station station);
+	public List<Schedule> findBySourceStationOrDestinationStation(Station station, Station designation);
 	
 }

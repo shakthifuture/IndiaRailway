@@ -1,33 +1,25 @@
 package com.copper.model;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "train")
+@Table(name = "roles")
 @Getter
 @Setter
-public class Train {
+public class Role {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Integer id;
 	
-	@Column(name="train_number")
-	private int trainNumber;
-	
-	@Column(name="train_name")
-	private String trainName;
-	
-	@OneToMany	
-	private Set<Schedule> schedule;
+	@Column(name="name")
+	private String name;
 }

@@ -1,7 +1,6 @@
 package com.copper.service;
 
 import java.security.Key;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +10,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -31,7 +29,7 @@ import io.jsonwebtoken.security.Keys;
 
 @Service
 @Transactional
-public class UserService implements UserDetailsService {
+public class UserServiceImpl implements UserDetailsService {
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -49,9 +47,9 @@ public class UserService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) {
 		com.copper.model.User user = userRepository.findByUsername(username);
         if (user == null) {
-            throw new UsernameNotFoundException(username);
+            throw new UsernameNotFoundException("Could not find user: "+username);
         }
-        return new User(user.getUsername(), user.getPassword(), new ArrayList<>());
+        return new MyUserDetails(user);
 	}
 	
 	@Transactional(readOnly = true)

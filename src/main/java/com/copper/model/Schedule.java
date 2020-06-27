@@ -33,8 +33,8 @@ public class Schedule {
 	private Station sourceStation;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="desig_station_id")
-	private Station desginationStation;
+	@JoinColumn(name="destination_station_id")
+	private Station destinationStation;
 	
 	@Column(name="arrival_time")
 	private Time arrivalTime;

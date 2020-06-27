@@ -2,8 +2,6 @@ package com.copper.web.rest;
 
 import java.io.IOException;
 
-import org.springframework.http.MediaType;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

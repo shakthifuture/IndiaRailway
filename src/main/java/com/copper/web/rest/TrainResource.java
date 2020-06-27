@@ -35,7 +35,7 @@ public class TrainResource {
 	}
 	
 	/**
-     * {@code GET  /allTrains} : get all the trains.
+     * {@code GET  /trains} : get all the trains.
      *
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of trains in body.
      */

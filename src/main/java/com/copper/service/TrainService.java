@@ -1,5 +1,6 @@
 package com.copper.service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,6 +33,7 @@ public class TrainService {
 	public List<TrainDto> getAllTrainDetails(){
 		return trainRepository.findAll().stream()
 				.map(trainMapper::toDto)
+				.sorted(Comparator.comparing(TrainDto::getTrainName, String.CASE_INSENSITIVE_ORDER))
 				.collect(Collectors.toList());
 	}
 	
