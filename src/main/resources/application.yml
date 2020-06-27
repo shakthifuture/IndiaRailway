@@ -12,3 +12,5 @@ logging:
       springframework:
         web: DEBUG
         security: DEBUG
+springdoc:
+  swagger-ui.path: /india-railway-api-docs.html
