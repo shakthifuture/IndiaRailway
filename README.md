@@ -4,6 +4,7 @@ Spring boot 2.3.1 version used.
 
 ## Setup Details
 1. Install lombok using below link in your IDE.
+    https://projectlombok.org/download
 2. Database setup folow a or b in your mariaDB(if you want use other database, add desired database depedency and change the configuration in application.yml).
 
     a) Create database schema name as 'indianrailway', execute the below file.
